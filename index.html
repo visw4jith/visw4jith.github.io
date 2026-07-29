@@ -3,20 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Viswajith A — System Administrator skilled in Linux, Windows, cloud platforms, and DevOps automation.">
-<title>Viswajith A — System Administrator</title>
+<title>Viswajith A — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
   :root {
-    --bg: #0a0a0a;
-    --surface: #141414;
-    --accent: #ff2a2a; /* Reference Accent Red */
+    --bg: #0d0d0d;
+    --accent: #ff2323; /* Matching Reference Vibrant Red */
     --text: #ffffff;
     --text-dim: rgba(255, 255, 255, 0.65);
-    --border: rgba(255, 255, 255, 0.12);
+    --border: rgba(255, 255, 255, 0.15);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,17 +24,16 @@
     background-color: var(--bg);
     color: var(--text);
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.6;
     overflow-x: hidden;
   }
 
   /* TOP METADATA BAR */
-  .meta-bar {
+  .top-bar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 24px 60px;
+    padding: 20px 40px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     letter-spacing: 0.15em;
@@ -45,49 +42,74 @@
     border-bottom: 1px solid var(--border);
   }
 
-  /* HERO HEADER (PAGE 1 STYLE) */
-  .hero-header {
+  /* SECTION 1: HERO PORTFOLIO WITH OVERLAPPING PHOTO */
+  .hero-section {
     position: relative;
-    padding: 80px 60px 40px;
-    text-align: center;
+    padding: 60px 40px 40px;
     border-bottom: 1px solid var(--border);
   }
 
-  .huge-title {
+  .hero-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-title {
     font-family: 'Anton', sans-serif;
-    font-size: clamp(80px, 18vw, 240px);
-    line-height: 0.82;
-    letter-spacing: 0.02em;
+    font-size: clamp(80px, 19vw, 250px);
+    line-height: 0.8;
     color: var(--accent);
     text-transform: uppercase;
-    margin-bottom: 40px;
+    letter-spacing: 0.01em;
+    text-align: center;
     user-select: none;
+    z-index: 1;
+    position: relative;
   }
 
-  .hero-subtext {
-    max-width: 650px;
-    margin: 0 auto 50px;
+  .hero-photo-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    height: 380px;
+    z-index: 2;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+  }
+
+  .hero-photo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-bio {
+    max-width: 450px;
     color: var(--text-dim);
-    font-size: 16px;
-    text-align: left;
-    line-height: 1.8;
+    font-size: 14px;
+    margin-top: 40px;
+    position: relative;
+    z-index: 3;
   }
 
-  .hero-footer-meta {
+  .hero-bottom-meta {
     display: flex;
     justify-content: space-between;
+    margin-top: 40px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     color: var(--text-dim);
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
   }
 
-  /* INTRO SECTION (PAGE 2 STYLE) */
+  /* SECTION 2: HELLO INTRO WITH RED CIRCLE & PROFILE PHOTO */
   .intro-section {
-    padding: 100px 60px;
+    position: relative;
+    padding: 100px 40px;
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
     gap: 60px;
@@ -95,236 +117,147 @@
     border-bottom: 1px solid var(--border);
   }
 
-  .intro-title {
+  .intro-text-side {
+    z-index: 2;
+  }
+
+  .intro-headline {
     font-family: 'Anton', sans-serif;
     font-size: clamp(50px, 8vw, 110px);
-    line-height: 0.9;
+    line-height: 0.88;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .intro-desc {
+    color: var(--text-dim);
+    max-width: 480px;
+    font-size: 15px;
+    margin-bottom: 30px;
+    line-height: 1.7;
+  }
+
+  .intro-photo-side {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+  }
+
+  .red-circle-bg {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    right: 20px;
+    z-index: 1;
+  }
+
+  .intro-photo-wrapper {
+    position: relative;
+    width: 280px;
+    height: 360px;
+    z-index: 2;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+  }
+
+  .intro-photo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* SECTION 3: EDUCATION / CAPABILITIES WITH SIDE CIRCLE PHOTO */
+  .edu-section {
+    padding: 100px 40px;
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .edu-photo-side {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+  }
+
+  .red-circle-bg-left {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    left: 20px;
+    z-index: 1;
+  }
+
+  .edu-photo-wrapper {
+    position: relative;
+    width: 280px;
+    height: 360px;
+    z-index: 2;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+  }
+
+  .edu-photo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .edu-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(50px, 8vw, 110px);
+    line-height: 0.88;
     text-transform: uppercase;
     margin-bottom: 30px;
   }
 
-  .intro-text {
-    color: var(--text-dim);
-    font-size: 16px;
-    max-width: 520px;
-    margin-bottom: 40px;
-    line-height: 1.8;
+  .edu-item {
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
   }
 
-  /* RED CIRCLE GRAPHIC CARD */
-  .red-circle-card {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 1 / 1;
+  .edu-item-header {
     display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .red-circle {
-    position: absolute;
-    width: 85%;
-    height: 85%;
-    background-color: var(--accent);
-    border-radius: 50%;
-    z-index: 0;
-  }
-
-  .card-content {
-    position: relative;
-    z-index: 1;
-    background: rgba(20, 20, 20, 0.9);
-    backdrop-filter: blur(16px);
-    border: 1px solid var(--border);
-    padding: 40px;
-    width: 85%;
-    border-radius: 12px;
-  }
-
-  .card-avatar {
-    font-family: 'Anton', sans-serif;
-    font-size: 56px;
-    color: var(--accent);
-    line-height: 1;
-    margin-bottom: 12px;
-  }
-
-  .card-title {
-    font-size: 22px;
+    justify-content: space-between;
     font-weight: 700;
+    font-size: 16px;
     margin-bottom: 4px;
   }
 
-  .card-subtitle {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 20px;
-  }
-
-  /* SECTIONS (PAGE 3 STYLE) */
-  section {
-    padding: 100px 60px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 60px;
-  }
-
-  .section-title {
-    font-family: 'Anton', sans-serif;
-    font-size: clamp(40px, 6vw, 90px);
-    line-height: 0.9;
-    text-transform: uppercase;
-  }
-
-  /* SKILLS GRID */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 24px;
-  }
-
-  .skill-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 32px;
-    border-radius: 8px;
-  }
-
-  .skill-category-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 20px;
-  }
-
-  .skill-list {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .skill-item {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    background: rgba(255, 255, 255, 0.04);
-    padding: 6px 12px;
-    border-radius: 4px;
-    border: 1px solid var(--border);
-    color: var(--text);
-  }
-
-  /* EXPERIENCE TIMELINE */
-  .timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-  }
-
-  .timeline-item {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 40px;
-    padding-bottom: 40px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .timeline-item:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
-
-  .timeline-year {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-  }
-
-  .timeline-role {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 6px;
-  }
-
-  .timeline-company {
+  .edu-item-header span {
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
     color: var(--text-dim);
-    margin-bottom: 18px;
+    font-weight: 400;
   }
 
-  .timeline-bullets {
-    list-style: square;
-    padding-left: 20px;
+  .edu-item-desc {
     color: var(--text-dim);
+    font-size: 13px;
   }
 
-  .timeline-bullets li {
-    margin-bottom: 8px;
-  }
-
-  /* PROJECTS GRID */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 24px;
-  }
-
-  .project-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 36px;
-    border-radius: 8px;
-    position: relative;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-  }
-
-  .project-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent);
-  }
-
-  .project-num {
-    font-family: 'Anton', sans-serif;
-    font-size: 36px;
-    color: var(--accent);
-    margin-bottom: 16px;
-  }
-
-  .project-name {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-
-  .project-desc {
-    color: var(--text-dim);
-    margin-bottom: 24px;
-    font-size: 14px;
-  }
-
-  /* BUTTONS & ACTIONS */
+  /* BUTTONS & LINKS */
   .btn {
     display: inline-block;
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    padding: 14px 28px;
+    padding: 12px 24px;
     text-decoration: none;
-    border-radius: 4px;
-    transition: all 0.25s ease;
+    border-radius: 2px;
+    transition: all 0.2s ease;
   }
 
   .btn-accent {
@@ -334,41 +267,84 @@
   }
 
   .btn-accent:hover {
-    background: #e02020;
-    transform: translateY(-2px);
+    background: #d91c1c;
   }
 
   .btn-outline {
     border: 1px solid var(--border);
     color: var(--text);
-    margin-left: 12px;
+    margin-left: 10px;
   }
 
   .btn-outline:hover {
     border-color: var(--accent);
     color: var(--accent);
-    transform: translateY(-2px);
   }
 
-  /* CONTACT & FOOTER */
-  .contact-section {
-    text-align: center;
-    padding: 120px 60px;
+  /* SKILLS & PROJECTS SECTIONS */
+  .section-padding {
+    padding: 100px 40px;
     border-bottom: 1px solid var(--border);
   }
 
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    margin-top: 40px;
-    flex-wrap: wrap;
+  .section-heading {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(40px, 6vw, 80px);
+    line-height: 0.9;
+    text-transform: uppercase;
+    margin-bottom: 40px;
   }
 
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .project-box {
+    background: #141414;
+    border: 1px solid var(--border);
+    padding: 28px;
+  }
+
+  .project-num {
+    font-family: 'Anton', sans-serif;
+    font-size: 32px;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .project-name {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .project-desc {
+    color: var(--text-dim);
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    padding: 4px 8px;
+  }
+
+  /* FOOTER */
   footer {
     display: flex;
     justify-content: space-between;
-    padding: 30px 60px;
+    padding: 24px 40px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     color: var(--text-dim);
@@ -377,29 +353,32 @@
 
   /* RESPONSIVE DESIGN */
   @media (max-width: 900px) {
-    .meta-bar, .hero-header, .intro-section, section, .contact-section, footer {
-      padding-left: 24px;
-      padding-right: 24px;
+    .top-bar, .hero-section, .intro-section, .edu-section, .section-padding, footer {
+      padding-left: 20px;
+      padding-right: 20px;
     }
 
-    .intro-section {
-      grid-template-columns: 1fr;
-      gap: 40px;
+    .hero-photo-wrapper {
+      width: 200px;
+      height: 280px;
     }
 
-    .timeline-item {
+    .intro-section, .edu-section {
       grid-template-columns: 1fr;
-      gap: 12px;
+    }
+
+    .edu-photo-side {
+      order: 2;
     }
 
     .btn-outline {
       margin-left: 0;
-      margin-top: 12px;
+      margin-top: 10px;
     }
 
     footer {
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
       text-align: center;
     }
   }
@@ -407,35 +386,43 @@
 </head>
 <body>
 
-  <!-- TOP METADATA BAR -->
-  <div class="meta-bar">
+  <!-- TOP BAR -->
+  <div class="top-bar">
     <span>CREATIVE PORTFOLIO</span>
-    <span>SYSADMIN / DEVOPS</span>
     <span>MAY 09, 2026</span>
   </div>
 
-  <!-- HERO HEADER -->
-  <div class="hero-header">
-    <h1 class="huge-title">PORTFOLIO</h1>
-    <p class="hero-subtext">
-      System Administrator skilled in Linux, Windows, cloud platforms, and DevOps automation. Focused on system reliability, security, and performance optimization.
-    </p>
-    <div class="hero-footer-meta">
-      <span>VISWAJITH A</span>
-      <span>@VISW4JITH</span>
-      <span>CHELAKKARA, THRISSUR</span>
+  <!-- HERO SECTION WITH OVERLAPPING CENTER PHOTO -->
+  <div class="hero-section">
+    <div class="hero-container">
+      <h1 class="hero-title">PORTFOLIO</h1>
+
+      <!-- PHOTO OVERLAY (Replace SRC with your image) -->
+      <div class="hero-photo-wrapper">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Viswajith A Portrait">
+      </div>
+
+      <p class="hero-bio">
+        System Administrator skilled in Linux, Windows, cloud platforms, and DevOps automation. Focused on system reliability, security, and performance optimization.
+      </p>
+
+      <div class="hero-bottom-meta">
+        <span>visw4jith.github.io</span>
+        <span>@visw4jith</span>
+        <span>Thrissur, Kerala, India</span>
+      </div>
     </div>
   </div>
 
-  <!-- HELLO INTRO SECTION -->
+  <!-- INTRO SECTION WITH RED CIRCLE & PHOTO -->
   <div class="intro-section">
-    <div>
-      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 16px;">
+    <div class="intro-text-side">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px;">
         CREATIVE PORTFOLIO
       </div>
-      <h2 class="intro-title">HELLO, I'M<br>VISWAJITH<br>A.</h2>
-      <p class="intro-text">
-        Junior System Administrator with hands-on experience managing Linux & Windows server environments, cloud platforms, and automation pipelines.
+      <h2 class="intro-headline">HELLO, I'M<br>VISWAJITH<br>A.</h2>
+      <p class="intro-desc">
+        Junior System Administrator with hands-on experience managing Linux & Windows server environments, cloud platforms, and automation.
       </p>
       <div>
         <a href="mailto:viswajith0912@gmail.com" class="btn btn-accent">HIRE ME</a>
@@ -443,188 +430,115 @@
       </div>
     </div>
 
-    <!-- RED CIRCLE GRAPHIC CARD -->
-    <div class="red-circle-card">
-      <div class="red-circle"></div>
-      <div class="card-content">
-        <div class="card-avatar">VA.</div>
-        <div class="card-title">Viswajith A</div>
-        <div class="card-subtitle">Junior SysAdmin · Bridge Global</div>
-        <p style="font-size: 13px; color: var(--text-dim); line-height: 1.6;">
-          Networking Track (CCNA) • AWS / Azure • Infrastructure & Automation Specialist
-        </p>
+    <div class="intro-photo-side">
+      <div class="red-circle-bg"></div>
+      <!-- PHOTO OVERLAY (Replace SRC with your image) -->
+      <div class="intro-photo-wrapper">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Viswajith Profile Photo">
       </div>
     </div>
   </div>
 
-  <!-- SKILLS SECTION -->
-  <section id="skills">
-    <div class="section-header">
-      <h2 class="section-title">MY<br>CAPABILITIES</h2>
-      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-dim);">01 / STACK</span>
-    </div>
-
-    <div class="skills-grid">
-      <div class="skill-box">
-        <div class="skill-category-title">Cloud & DevOps</div>
-        <ul class="skill-list">
-          <li class="skill-item">AWS</li>
-          <li class="skill-item">Azure</li>
-          <li class="skill-item">GCP</li>
-          <li class="skill-item">Terraform</li>
-          <li class="skill-item">Ansible</li>
-          <li class="skill-item">CI/CD</li>
-          <li class="skill-item">GitHub</li>
-          <li class="skill-item">GitLab</li>
-        </ul>
-      </div>
-
-      <div class="skill-box">
-        <div class="skill-category-title">Networking & Security</div>
-        <ul class="skill-list">
-          <li class="skill-item">CCNA</li>
-          <li class="skill-item">DNS</li>
-          <li class="skill-item">DHCP</li>
-          <li class="skill-item">Firewall</li>
-          <li class="skill-item">Active Directory</li>
-          <li class="skill-item">VPN</li>
-        </ul>
-      </div>
-
-      <div class="skill-box">
-        <div class="skill-category-title">Operating Systems</div>
-        <ul class="skill-list">
-          <li class="skill-item">Ubuntu</li>
-          <li class="skill-item">CentOS</li>
-          <li class="skill-item">Red Hat</li>
-          <li class="skill-item">Windows Server</li>
-          <li class="skill-item">Bash Scripting</li>
-          <li class="skill-item">Python</li>
-        </ul>
-      </div>
-
-      <div class="skill-box">
-        <div class="skill-category-title">Databases & Tools</div>
-        <ul class="skill-list">
-          <li class="skill-item">MySQL</li>
-          <li class="skill-item">SonarQube</li>
-          <li class="skill-item">AWS S3</li>
-          <li class="skill-item">Docker</li>
-          <li class="skill-item">Snipe-IT</li>
-        </ul>
+  <!-- EDUCATION & EXPERIENCE WITH RED CIRCLE & PHOTO -->
+  <div class="edu-section">
+    <div class="edu-photo-side">
+      <div class="red-circle-bg-left"></div>
+      <!-- PHOTO OVERLAY (Replace SRC with your image) -->
+      <div class="edu-photo-wrapper">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="Viswajith Photo">
       </div>
     </div>
-  </section>
 
-  <!-- EXPERIENCE SECTION -->
-  <section id="experience">
-    <div class="section-header">
-      <h2 class="section-title">WORK<br>EXPERIENCE</h2>
-      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-dim);">02 / HISTORY</span>
-    </div>
+    <div>
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px;">
+        CREATIVE PORTFOLIO
+      </div>
+      <h2 class="edu-title">MY<br>EXPERIENCE</h2>
 
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-year">PRESENT</div>
-        <div>
-          <div class="timeline-role">Junior System Administrator</div>
-          <div class="timeline-company">Bridge Global Software Solutions Pvt Ltd</div>
-          <ul class="timeline-bullets">
-            <li>Managed and maintained IT infrastructure including Linux and Windows server environments.</li>
-            <li>Monitored system performance and ensured high availability of services.</li>
-            <li>Handled user management, access control, and system security configurations.</li>
-            <li>Troubleshot network, server, and application issues.</li>
-          </ul>
+      <div class="edu-item">
+        <div class="edu-item-header">
+          Junior System Administrator
+          <span>(PRESENT)</span>
         </div>
+        <div style="color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 11px; margin-bottom: 6px;">Bridge Global Software Solutions</div>
+        <div class="edu-item-desc">Managed IT infrastructure, Linux/Windows servers, user access controls, and high service availability.</div>
       </div>
 
-      <div class="timeline-item">
-        <div class="timeline-year">INTERNSHIP</div>
-        <div>
-          <div class="timeline-role">Associate System Engineer Intern</div>
-          <div class="timeline-company">Bridge Global Software Solutions Pvt Ltd</div>
-          <ul class="timeline-bullets">
-            <li>Maintained IT systems and supported daily operations across the organization.</li>
-            <li>Troubleshot and resolved technical issues across systems and networks.</li>
-          </ul>
+      <div class="edu-item">
+        <div class="edu-item-header">
+          Associate System Engineer Intern
+          <span>(INTERNSHIP)</span>
         </div>
+        <div style="color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 11px; margin-bottom: 6px;">Bridge Global Software Solutions</div>
+        <div class="edu-item-desc">Maintained IT systems, troubleshot network issues, and supported daily technical operations.</div>
+      </div>
+
+      <div class="edu-item" style="border: none;">
+        <div class="edu-item-header">
+          Network Engineering Course
+          <span>(CCNA TRACK)</span>
+        </div>
+        <div style="color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 11px; margin-bottom: 6px;">Synnefo Solutions</div>
+        <div class="edu-item-desc">Focused on routing, switching, DNS/DHCP, subnets, and core network management.</div>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- PROJECTS SECTION -->
-  <section id="projects">
-    <div class="section-header">
-      <h2 class="section-title">FEATURED<br>PROJECTS</h2>
-      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-dim);">03 / SELECTED WORK</span>
-    </div>
-
+  <div class="section-padding" id="projects">
+    <h2 class="section-heading">FEATURED PROJECTS</h2>
     <div class="projects-grid">
-      <div class="project-card">
+      <div class="project-box">
         <div class="project-num">01</div>
         <div class="project-name">TimeTracker</div>
-        <p class="project-desc">Implemented as a project monitoring tool to track task progress and team productivity, providing visibility into workloads.</p>
-        <div class="skill-list">
-          <span class="skill-item">Linux</span>
-          <span class="skill-item">Python</span>
-          <span class="skill-item">MySQL</span>
+        <div class="project-desc">Project monitoring tool built to track task progress and team productivity.</div>
+        <div class="tag-list">
+          <span class="tag">Linux</span>
+          <span class="tag">Python</span>
+          <span class="tag">MySQL</span>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-box">
         <div class="project-num">02</div>
         <div class="project-name">Snipe-IT Asset Mgmt</div>
-        <p class="project-desc">Deployed and managed as an internal asset management system for tracking hardware and software inventory centrally.</p>
-        <div class="skill-list">
-          <span class="skill-item">Ubuntu</span>
-          <span class="skill-item">Docker</span>
-          <span class="skill-item">MySQL</span>
+        <div class="project-desc">Centralized IT asset tracking system for internal hardware and software licenses.</div>
+        <div class="tag-list">
+          <span class="tag">Ubuntu</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Nginx</span>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-box">
         <div class="project-num">03</div>
         <div class="project-name">GitLab CI/CD Pipeline</div>
-        <p class="project-desc">Configured GitLab Pages for static web applications and built automated pipelines with SonarQube & AWS integration.</p>
-        <div class="skill-list">
-          <span class="skill-item">GitLab</span>
-          <span class="skill-item">SonarQube</span>
-          <span class="skill-item">AWS</span>
+        <div class="project-desc">Automated testing, security scanning, and deployment with AWS and SonarQube.</div>
+        <div class="tag-list">
+          <span class="tag">GitLab</span>
+          <span class="tag">AWS</span>
+          <span class="tag">SonarQube</span>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-box">
         <div class="project-num">04</div>
         <div class="project-name">Automated Server Backup</div>
-        <p class="project-desc">Developed backup scripts using Bash and Python scheduled with cron jobs and integrated with AWS S3 for disaster recovery.</p>
-        <div class="skill-list">
-          <span class="skill-item">Bash</span>
-          <span class="skill-item">Python</span>
-          <span class="skill-item">AWS S3</span>
+        <div class="project-desc">Backup scripts integrated with AWS S3 for secure off-site disaster recovery.</div>
+        <div class="tag-list">
+          <span class="tag">Bash</span>
+          <span class="tag">Python</span>
+          <span class="tag">AWS S3</span>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- CONTACT SECTION -->
-  <div class="contact-section" id="contact">
-    <h2 class="section-title" style="margin-bottom: 20px;">GET IN TOUCH</h2>
-    <p style="color: var(--text-dim); max-width: 500px; margin: 0 auto;">
-      Open to new opportunities, cloud automation projects, or discussions on system infrastructure.
-    </p>
-
-    <div class="contact-links">
-      <a href="mailto:viswajith0912@gmail.com" class="btn btn-accent">EMAIL ME</a>
-      <a href="https://www.linkedin.com/in/visw4jith" target="_blank" rel="noopener" class="btn btn-outline">LINKEDIN</a>
-      <a href="tel:+918891310412" class="btn btn-outline">+91 88913 10412</a>
     </div>
   </div>
 
   <!-- FOOTER -->
   <footer>
-    <span>© 2026 VISWAJITH A</span>
-    <span>SYSTEM ADMINISTRATOR</span>
-    <span>CHELAKKARA, KERALA</span>
+    <span>visw4jith.github.io</span>
+    <span>@visw4jith</span>
+    <span>123 Anywhere St., Any City, ST 12345</span>
   </footer>
 
 </body>
