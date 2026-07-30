@@ -1,5 +1,5 @@
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
-import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 const container   = document.getElementById('modelViewer');
 const canvas       = document.getElementById('viewerCanvas');
@@ -9,6 +9,7 @@ const loadingLabel  = document.getElementById('viewerLoadingLabel');
 const hintEl        = document.getElementById('viewerHint');
 
 if (container && canvas) {
+ try {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const scene = new THREE.Scene();
@@ -35,8 +36,8 @@ if (container && canvas) {
   scene.add(modelGroup);
 
   function fitContainer() {
-    const w = container.clientWidth;
-    const h = container.clientHeight;
+    const w = container.clientWidth || 300;
+    const h = container.clientHeight || 400;
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
@@ -79,7 +80,7 @@ if (container && canvas) {
       }
     },
     (err) => {
-      if (loadingLabel) loadingLabel.textContent = 'Could not load 3D model';
+      if (loadingLabel) loadingLabel.textContent = 'Could not load 3D model — check assets/model.glb exists';
       console.error('GLB load error:', err);
     }
   );
@@ -126,4 +127,8 @@ if (container && canvas) {
     requestAnimationFrame(animate);
   }
   animate();
+ } catch (err) {
+    console.error('3D viewer setup failed:', err);
+    if (loadingLabel) loadingLabel.textContent = '3D viewer error — see console (F12)';
+ }
 }
