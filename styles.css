@@ -92,12 +92,7 @@ a{cursor:pointer;}
   -webkit-text-stroke:2px var(--white);
 }
 #modelViewer{
-  border:1px solid var(--line);
-  border-radius:6px;
-  overflow:hidden;
-  background:
-    repeating-linear-gradient(135deg, rgba(232,35,26,0.05) 0 2px, transparent 2px 14px),
-    var(--bg2);
+  overflow:visible;
 }
 #viewerCanvas{
   width:100%;height:100%;display:block;
