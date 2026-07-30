@@ -44,14 +44,6 @@
         <a href="#contact" class="btn btn-outline magnetic">Get in Touch</a>
       </div>
     </div>
-    <div class="hero-photo load-in" style="--d:2" id="modelViewer">
-      <canvas id="viewerCanvas"></canvas>
-      <div class="viewer-loading" id="viewerLoading">
-        <div class="viewer-loading-bar"><div class="viewer-loading-fill" id="viewerLoadingFill"></div></div>
-        <span id="viewerLoadingLabel">Loading 3D model… 0%</span>
-      </div>
-      <span class="viewer-hint" id="viewerHint">Drag to rotate</span>
-    </div>
   </div>
   <div class="scroll-cue" aria-hidden="true"><span></span></div>
 </section>
@@ -74,14 +66,13 @@
       </div>
       <div class="about-photo-wrap reveal" data-reveal-delay="150">
         <div class="about-circle" data-parallax="0.08"></div>
-        <div class="about-photo photo3d">
-          <div class="photo3d-scene">
-            <div class="photo3d-card">
-              <div class="photo3d-face front"><img src="images/profile.jpg" alt="Viswajith A" draggable="false"></div>
-              <div class="photo3d-face back"><span>VA</span></div>
-            </div>
+        <div class="about-photo" id="modelViewer">
+          <canvas id="viewerCanvas"></canvas>
+          <div class="viewer-loading" id="viewerLoading">
+            <div class="viewer-loading-bar"><div class="viewer-loading-fill" id="viewerLoadingFill"></div></div>
+            <span id="viewerLoadingLabel">Loading 3D model… 0%</span>
           </div>
-          <span class="photo3d-hint">Drag to rotate</span>
+          <span class="viewer-hint" id="viewerHint">Drag to rotate</span>
         </div>
       </div>
     </div>
