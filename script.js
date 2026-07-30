@@ -88,4 +88,67 @@
       }
     });
   }
+  /* ---------- 3D flip-card photos (About / Education) ---------- */
+  document.querySelectorAll('.photo3d-card').forEach((photoCard) => {
+    let rotation = 0;
+    let velocity = 0;
+    let dragging = false;
+    let lastX = 0;
+    let lastT = 0;
+    let idleSpin = !reduceMotion;
+
+    const applyRotation = () => {
+      photoCard.style.transform = `rotateY(${rotation}deg)`;
+    };
+
+    photoCard.addEventListener('pointerdown', (e) => {
+      dragging = true;
+      idleSpin = false;
+      photoCard.classList.add('dragging');
+      lastX = e.clientX;
+      lastT = performance.now();
+      velocity = 0;
+      photoCard.setPointerCapture(e.pointerId);
+    });
+    photoCard.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      const now = performance.now();
+      const dx = e.clientX - lastX;
+      const dt = Math.max(now - lastT, 1);
+      rotation += dx * 0.4;
+      velocity = (dx * 0.4) / dt * 16;
+      lastX = e.clientX;
+      lastT = now;
+      applyRotation();
+    });
+    const endDrag = () => {
+      if (!dragging) return;
+      dragging = false;
+      photoCard.classList.remove('dragging');
+    };
+    photoCard.addEventListener('pointerup', endDrag);
+    photoCard.addEventListener('pointercancel', endDrag);
+    photoCard.addEventListener('pointerleave', () => { if (dragging) endDrag(); });
+
+    const tick = () => {
+      if (!dragging) {
+        if (Math.abs(velocity) > 0.02) {
+          rotation += velocity;
+          velocity *= 0.95;
+          applyRotation();
+        } else if (idleSpin) {
+          rotation += 0.12;
+          applyRotation();
+        }
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+
+    const wrap = photoCard.closest('.photo3d');
+    wrap.addEventListener('mouseenter', () => { idleSpin = false; });
+    wrap.addEventListener('mouseleave', () => {
+      if (!dragging && !reduceMotion) idleSpin = true;
+    });
+  });
 })();
