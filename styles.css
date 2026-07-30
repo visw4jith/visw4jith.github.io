@@ -91,13 +91,6 @@ a{cursor:pointer;}
   color:transparent;
   -webkit-text-stroke:2px var(--white);
 }
-.hero-photo{
-  position:absolute;
-  right:5vw;top:50%;transform:translateY(-50%);
-  width:min(30vw,340px);
-  aspect-ratio:3/4;
-  z-index:1;
-}
 #modelViewer{
   border:1px solid var(--line);
   border-radius:6px;
@@ -129,6 +122,44 @@ a{cursor:pointer;}
   opacity:0;transition:opacity .4s ease;
 }
 .viewer-hint.visible{opacity:1;}
+
+/* flip-card photo (About / Education sections) */
+.photo3d{perspective:1200px;}
+.photo3d-scene{width:100%;height:100%;}
+.photo3d-card{
+  position:relative;width:100%;height:100%;
+  transform-style:preserve-3d;
+  transform:rotateY(0deg);
+  cursor:grab;
+  touch-action:pan-y;
+  border-radius:6px;
+  will-change:transform;
+}
+.photo3d-card.dragging{cursor:grabbing;}
+.photo3d-face{
+  position:absolute;inset:0;
+  backface-visibility:hidden;
+  border-radius:6px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:var(--bg2);
+}
+.photo3d-face.front{transform:translateZ(0.5px);}
+.photo3d-face.front img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;}
+.photo3d-face.back{
+  transform:rotateY(180deg) translateZ(0.5px);
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg, var(--bg2), var(--bg));
+}
+.photo3d-face.back span{
+  font-family:'Anton',sans-serif;font-size:56px;color:var(--red);
+  -webkit-text-stroke:1px var(--white);
+}
+.photo3d-hint{
+  position:absolute;left:50%;bottom:-28px;transform:translateX(-50%);
+  font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--gray);white-space:nowrap;
+}
 .hero-sub{
   max-width:640px;
   margin-top:36px;
@@ -293,7 +324,6 @@ footer span{color:var(--red);}
 @media(max-width:860px){
   .about-grid,.edu-grid,.exp-item{grid-template-columns:1fr;}
   .skills-grid,.proj-grid{grid-template-columns:1fr;}
-  .hero-photo{display:none;}
   .edu-photo-wrap{display:none;}
   .cursor-dot{display:none;}
   footer{flex-direction:column;gap:10px;text-align:center;}
