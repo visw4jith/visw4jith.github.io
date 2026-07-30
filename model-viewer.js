@@ -67,6 +67,21 @@ if (container && canvas) {
       const scale = 2.1 / maxDim;
       model.scale.setScalar(scale);
 
+      // the source file ships with no materials/textures — give it an
+      // intentional graphite finish with a red accent instead of the
+      // flat default gray Three.js falls back to
+      model.traverse((child) => {
+        if (child.isMesh) {
+          child.material = new THREE.MeshStandardMaterial({
+            color: 0x35353d,
+            metalness: 0.35,
+            roughness: 0.4,
+            emissive: 0xe8231a,
+            emissiveIntensity: 0.045,
+          });
+        }
+      });
+
       modelGroup.add(model);
       camera.position.set(0, 0.15, 4.2);
       camera.lookAt(0, 0, 0);
