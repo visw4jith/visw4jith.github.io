@@ -44,18 +44,13 @@
         <a href="#contact" class="btn btn-outline magnetic">Get in Touch</a>
       </div>
     </div>
-    <div class="hero-photo load-in photo3d" style="--d:2" id="photo3d">
-      <div class="photo3d-scene">
-        <div class="photo3d-card" id="photo3dCard">
-          <div class="photo3d-face front">
-            <img src="assets/viswajith.png" alt="Viswajith A" draggable="false">
-          </div>
-          <div class="photo3d-face back">
-            <span>VA</span>
-          </div>
-        </div>
+    <div class="hero-photo load-in" style="--d:2" id="modelViewer">
+      <canvas id="viewerCanvas"></canvas>
+      <div class="viewer-loading" id="viewerLoading">
+        <div class="viewer-loading-bar"><div class="viewer-loading-fill" id="viewerLoadingFill"></div></div>
+        <span id="viewerLoadingLabel">Loading 3D model… 0%</span>
       </div>
-      <span class="photo3d-hint">Drag to rotate</span>
+      <span class="viewer-hint" id="viewerHint">Drag to rotate</span>
     </div>
   </div>
   <div class="scroll-cue" aria-hidden="true"><span></span></div>
@@ -79,30 +74,14 @@
       </div>
       <div class="about-photo-wrap reveal" data-reveal-delay="150">
         <div class="about-circle" data-parallax="0.08"></div>
-        <div class="about-photo">
-          <svg class="techie-illo" viewBox="0 0 240 320" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
-            <path d="M76 320 L76 258 Q120 230 164 258 L164 320 Z" fill="var(--bg2)" stroke="var(--white)" stroke-width="4"/>
-            <circle cx="120" cy="115" r="38" fill="var(--bg2)" stroke="var(--white)" stroke-width="4"/>
-            <path d="M80 108 Q86 66 120 66 Q154 66 160 108 Q160 80 120 78 Q80 80 80 108 Z" fill="var(--white)"/>
-            <rect x="88" y="106" width="29" height="17" rx="7" fill="var(--bg)"/>
-            <rect x="123" y="106" width="29" height="17" rx="7" fill="var(--bg)"/>
-            <rect x="116" y="111" width="8" height="4" fill="var(--bg)"/>
-            <path d="M108 141 Q120 148 132 141" stroke="var(--white)" stroke-width="3" fill="none" stroke-linecap="round"/>
-            <rect x="46" y="245" width="140" height="12" rx="4" fill="var(--bg2)"/>
-            <rect x="62" y="178" width="108" height="68" rx="5" fill="none" stroke="var(--white)" stroke-width="4"/>
-            <rect x="68" y="184" width="96" height="56" fill="var(--bg)" opacity="0.35"/>
-            <line x1="76" y1="198" x2="136" y2="198" stroke="var(--bg)" stroke-width="3" stroke-linecap="round"/>
-            <line x1="76" y1="210" x2="150" y2="210" stroke="var(--white)" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
-            <line x1="76" y1="222" x2="116" y2="222" stroke="var(--white)" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
-            <g transform="translate(172,150)">
-              <path d="M0 15 L5 46 Q5 51 10 51 L29 51 Q34 51 34 46 L39 15 Z" fill="none" stroke="var(--white)" stroke-width="3.5"/>
-              <path d="M38 21 Q52 21 50 33 Q48 43 36 41" fill="none" stroke="var(--white)" stroke-width="3.5"/>
-              <rect x="-2" y="12" width="43" height="5" fill="var(--bg)"/>
-              <path d="M9 8 Q13 -2 9 -10" stroke="var(--white)" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.5"/>
-              <path d="M20 8 Q24 -2 20 -10" stroke="var(--white)" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.5"/>
-              <path d="M31 8 Q35 -2 31 -10" stroke="var(--white)" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.5"/>
-            </g>
-          </svg>
+        <div class="about-photo photo3d">
+          <div class="photo3d-scene">
+            <div class="photo3d-card">
+              <div class="photo3d-face front"><img src="images/profile.jpg" alt="Viswajith A" draggable="false"></div>
+              <div class="photo3d-face back"><span>VA</span></div>
+            </div>
+          </div>
+          <span class="photo3d-hint">Drag to rotate</span>
         </div>
       </div>
     </div>
@@ -115,30 +94,14 @@
     <div class="edu-grid">
       <div class="edu-photo-wrap reveal">
         <div class="edu-circle" data-parallax="0.06"></div>
-        <div class="edu-photo">
-          <svg class="techie-illo" viewBox="0 0 240 320" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
-            <path d="M76 320 L76 258 Q120 230 164 258 L164 320 Z" fill="var(--bg2)" stroke="var(--white)" stroke-width="4"/>
-            <circle cx="120" cy="115" r="38" fill="var(--bg2)" stroke="var(--white)" stroke-width="4"/>
-            <path d="M80 108 Q86 66 120 66 Q154 66 160 108 Q160 80 120 78 Q80 80 80 108 Z" fill="var(--white)"/>
-            <rect x="88" y="106" width="29" height="17" rx="7" fill="var(--bg)"/>
-            <rect x="123" y="106" width="29" height="17" rx="7" fill="var(--bg)"/>
-            <rect x="116" y="111" width="8" height="4" fill="var(--bg)"/>
-            <path d="M108 141 Q120 148 132 141" stroke="var(--white)" stroke-width="3" fill="none" stroke-linecap="round"/>
-            <rect x="46" y="245" width="140" height="12" rx="4" fill="var(--bg2)"/>
-            <rect x="62" y="178" width="108" height="68" rx="5" fill="none" stroke="var(--white)" stroke-width="4"/>
-            <rect x="68" y="184" width="96" height="56" fill="var(--bg)" opacity="0.35"/>
-            <line x1="76" y1="198" x2="136" y2="198" stroke="var(--bg)" stroke-width="3" stroke-linecap="round"/>
-            <line x1="76" y1="210" x2="150" y2="210" stroke="var(--white)" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
-            <line x1="76" y1="222" x2="116" y2="222" stroke="var(--white)" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
-            <g transform="translate(172,150)">
-              <path d="M0 15 L5 46 Q5 51 10 51 L29 51 Q34 51 34 46 L39 15 Z" fill="none" stroke="var(--white)" stroke-width="3.5"/>
-              <path d="M38 21 Q52 21 50 33 Q48 43 36 41" fill="none" stroke="var(--white)" stroke-width="3.5"/>
-              <rect x="-2" y="12" width="43" height="5" fill="var(--bg)"/>
-              <path d="M9 8 Q13 -2 9 -10" stroke="var(--white)" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.5"/>
-              <path d="M20 8 Q24 -2 20 -10" stroke="var(--white)" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.5"/>
-              <path d="M31 8 Q35 -2 31 -10" stroke="var(--white)" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.5"/>
-            </g>
-          </svg>
+        <div class="edu-photo photo3d">
+          <div class="photo3d-scene">
+            <div class="photo3d-card">
+              <div class="photo3d-face front"><img src="images/profile.jpg" alt="Viswajith A" draggable="false"></div>
+              <div class="photo3d-face back"><span>VA</span></div>
+            </div>
+          </div>
+          <span class="photo3d-hint">Drag to rotate</span>
         </div>
       </div>
       <div>
@@ -316,5 +279,6 @@
 </footer>
 
 <script src="script.js"></script>
+<script type="module" src="model-viewer.js"></script>
 </body>
 </html>
