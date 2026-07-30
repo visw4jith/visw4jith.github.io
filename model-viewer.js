@@ -1,5 +1,8 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
+
+const MODEL_URL = 'assets/model.glb'; // swap to a GitHub Release / CDN URL here if hosting the model externally
 
 const container   = document.getElementById('modelViewer');
 const canvas       = document.getElementById('viewerCanvas');
@@ -46,8 +49,9 @@ if (container && canvas) {
   new ResizeObserver(fitContainer).observe(container);
 
   const loader = new GLTFLoader();
+  loader.setMeshoptDecoder(MeshoptDecoder);
   loader.load(
-    'assets/model.glb',
+    MODEL_URL,
     (gltf) => {
       const model = gltf.scene;
 
